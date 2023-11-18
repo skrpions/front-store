@@ -105,6 +105,8 @@ export class FormProductComponent {
     if (this.reactiveForm.invalid) return this.reactiveForm.markAllAsTouched(); // Activate all errors
 
     const record: ProductEntity = this.reactiveForm.value;
+    record.image = 'https://latit.co/wp-content/uploads/2021/05/1050707-1.jpg';
+
     this.reference.close(record);
   }
 

@@ -9,6 +9,7 @@ import { ProductApplication } from '../../application/product-application';
 import { ProductEntity } from '../../domain/entities/product-entity';
 import { FormProductComponent } from '../form-product/form-product.component';
 
+
 @Component({
   selector: 'app-list-products',
   standalone: true,
@@ -26,7 +27,7 @@ export class ListProductsComponent {
   isAdministrator: boolean = false;
 
   dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['id', 'picture', 'title', 'price', 'count', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'picture', 'title', 'price', 'category', 'actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -38,6 +39,7 @@ export class ListProductsComponent {
 
   ngOnInit(): void {
     this.getAll();
+
     //this.isAdministrator = this.utilSrv.isAdministrator();
   }
 
@@ -48,6 +50,11 @@ export class ListProductsComponent {
       },
     });
   }
+
+
+  /* showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  } */
 
   processResponse(rawData: any) {
 
@@ -153,6 +160,19 @@ export class ListProductsComponent {
   private addProduct(response: any) {
 
     console.log('To add', response);
+
+    this.productApplication.add(response).subscribe({
+      next: () => {
+        console.log('Agregado Exitosamente!');
+
+        //this.utilSrv.handleSuccess('Added');
+        this.getAll();
+      },
+      error: () => {
+        console.log('Falló al intentar agregar!');
+        //this.utilSrv.handleError('adding');
+      }
+    });
 
     /* this.productApplication.add(formData).subscribe({
       next: () => {

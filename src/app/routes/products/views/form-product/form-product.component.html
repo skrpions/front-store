@@ -25,76 +25,67 @@
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Title:</mat-label>
             <input formControlName="title" type="text" matInput required />
-            <mat-error *ngIf="titleField?.hasError('required')"
-              >Title is required</mat-error
-            >
-            <mat-error *ngIf="titleField?.hasError('minlength')"
-              >Insufficient Characters</mat-error
-            >
-            <mat-error *ngIf="titleField?.hasError('maxlength')"
-              >Character Limit Reached</mat-error
-            >
-          </mat-form-field>
-        </div>
-
-        <div class="row">
-          <!-- Price -->
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Price:</mat-label>
-            <input formControlName="price" type="number" matInput required />
-            <mat-error *ngIf="priceField?.hasError('required')"
-              >Price is required</mat-error
-            >
-            <mat-error *ngIf="priceField?.hasError('minlength')"
-              >Insufficient Characters</mat-error
-            >
-            <mat-error *ngIf="priceField?.hasError('maxlength')"
-              >Character Limit Reached</mat-error
-            >
-          </mat-form-field>
-
-          <!-- Description -->
-          <mat-form-field class="col-6" appearance="outline">
-            <mat-label>Description:</mat-label>
-            <input
-              formControlName="description"
-              type="number"
-              matInput
-              required
-            />
-            <mat-error *ngIf="descriptionField?.hasError('required')"
-              >Description is required</mat-error
-            >
-            <mat-error *ngIf="descriptionField?.hasError('minlength')"
-              >Insufficient Characters</mat-error
-            >
-            <mat-error *ngIf="descriptionField?.hasError('maxlength')"
-              >Character Limit Reached</mat-error
-            >
+            @if (titleField?.hasError('required')){
+            <mat-error>Title is required</mat-error>
+            } @if (titleField?.hasError('minlength')){
+            <mat-error>Insufficient Characters</mat-error>
+            } @if (titleField?.hasError('maxlength')){
+            <mat-error>Character Limit Reached</mat-error>
+            }
           </mat-form-field>
         </div>
 
         <div class="row">
           <!-- Category -->
-          <mat-form-field class="col-12" appearance="outline">
+          <mat-form-field class="col-6" appearance="outline">
             <mat-label>Category:</mat-label>
             <mat-select formControlName="category" placeholder="" required>
-              <mat-option
-                *ngFor="let category of listCategories"
-                [value]="category"
-              >
+              @for (category of listCategories; track category) {
+              <mat-option [value]="category">
                 {{ category }}
               </mat-option>
+              } @empty { Empty list of categories }
             </mat-select>
-            <mat-error *ngIf="categoryField?.hasError('required')"
-              >Category is required</mat-error
-            >
-            <mat-error *ngIf="categoryField?.hasError('minlength')"
-              >Insufficient Characters</mat-error
-            >
-            <mat-error *ngIf="categoryField?.hasError('maxlength')"
-              >Character Limit Reached</mat-error
-            >
+            @if (categoryField?.hasError('required')){
+            <mat-error>Category is required</mat-error>
+            } @if (categoryField?.hasError('minlength')){
+            <mat-error>Insufficient Characters</mat-error>
+            } @if (categoryField?.hasError('maxlength')){
+            <mat-error>Character Limit Reached</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Price -->
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Price:</mat-label>
+            <input formControlName="price" type="number" matInput required />
+            @if (priceField?.hasError('required')){
+            <mat-error>Price is required</mat-error>
+            } @if (priceField?.hasError('minlength')){
+            <mat-error>Insufficient Characters</mat-error>
+            } @if (priceField?.hasError('maxlength')){
+            <mat-error>Character Limit Reached</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <!-- Description -->
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Description:</mat-label>
+            <input
+              formControlName="description"
+              type="text"
+              matInput
+              required
+            />
+            @if (descriptionField?.hasError('required')){
+            <mat-error>Description is required</mat-error>
+            } @if (descriptionField?.hasError('minlength')){
+            <mat-error>Insufficient Characters</mat-error>
+            } @if (descriptionField?.hasError('maxlength')){
+            <mat-error>Character Limit Reached</mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
