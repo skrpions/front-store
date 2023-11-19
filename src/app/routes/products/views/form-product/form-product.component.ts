@@ -43,7 +43,7 @@ export class FormProductComponent {
   private initForm(): void {
     this.reactiveForm = this.fb.nonNullable.group({
       id: this.data?.id,
-      title: [this.data?.title, [Validators.required, Validators.minLength(2),Validators.maxLength(40)]],
+      title: [this.data?.title, [Validators.required, Validators.minLength(2)]],
       price: [this.data?.price, [Validators.required, Validators.min(0)]],
       description: [this.data?.description, [Validators.required, Validators.minLength(0)]],
       category: [this.data?.category, [Validators.required]],

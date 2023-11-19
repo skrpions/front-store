@@ -9,6 +9,7 @@ import { ProductApplication } from '../../application/product-application';
 import { ProductEntity } from '../../domain/entities/product-entity';
 import { FormProductComponent } from '../form-product/form-product.component';
 import { UtilsService } from '../../../../shared/services/utils.service';
+import { ConfirmComponent } from '../../../../shared/components/confirm/confirm.component';
 
 
 @Component({
@@ -142,27 +143,24 @@ export class ListProductsComponent {
 
   private updateProduct(id: any, response: any) {
 
-    console.log('To update ', response);
-
-
-    /* this.productApplication.update(id, response).subscribe({
-      next: () => {
+    this.productApplication.update(id, response).subscribe({
+      next: (reponse) => {
+        console.log('✅ ', response);
         this.utilSrv.handleSuccess('Updated');
         this.getAll();
       },
       error: () => {
         this.utilSrv.handleError('updating');
       }
-    }); */
+    });
 
   }
 
   private addProduct(response: any) {
 
-    console.log('To add', response);
-
     this.productApplication.add(response).subscribe({
-      next: () => {
+      next: (response) => {
+
         this.utilSrv.handleSuccess('Added');
         this.getAll();
       },
@@ -185,7 +183,7 @@ export class ListProductsComponent {
 
   delete(enterAnimationDuration: string, exitAnimationDuration: string, row: any = null!) {
 
-    /* const reference = this.dialog.open(ConfirmComponent, {
+    const reference = this.dialog.open(ConfirmComponent, {
       data: row,
       width: '350px',
       enterAnimationDuration,
@@ -204,27 +202,8 @@ export class ListProductsComponent {
         },
       });
 
-    }); */
+    });
 
   }
-
-  /* exportToExcel() {
-
-    this.productApplication.exportTotExcel().subscribe({
-
-      next: (rawData: any) => {
-        let file = new Blob([rawData], { type: 'application/vnd.ms-excel' });
-        let fileURL = URL.createObjectURL(file);
-        var anchor = document.createElement('a');
-        anchor.download = "products.xlsx";
-        anchor.href = fileURL;
-        anchor.click();
-
-        this.utilSrv.handleSuccess('Exported');
-      }, error: () => {
-        this.utilSrv.handleError('Exporting');
-      }
-    });
-  } */
 
 }
