@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { ProductApplication } from './routes/products/application/product-application';
 import { ProductInfrastructure } from './routes/products/infrastructure/product-infrastructure';
 import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
 
 const application = [ProductApplication];
 const infrastructure = [ProductInfrastructure];
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideHttpClient(),
+    provideToastr(), // Toastr providers
     ...application,
     ...infrastructure
   ]

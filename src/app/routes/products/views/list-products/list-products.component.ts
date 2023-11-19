@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductApplication } from '../../application/product-application';
 import { ProductEntity } from '../../domain/entities/product-entity';
 import { FormProductComponent } from '../form-product/form-product.component';
+import { UtilsService } from '../../../../shared/services/utils.service';
 
 
 @Component({
@@ -34,12 +35,11 @@ export class ListProductsComponent {
 
   private readonly productApplication = inject(ProductApplication);
   public dialog = inject(MatDialog);
+  private utilSrv = inject(UtilsService);
   //public toastr = inject(ToastrService);
-  //private utilSrv = inject(UtilsService);
 
   ngOnInit(): void {
     this.getAll();
-
     //this.isAdministrator = this.utilSrv.isAdministrator();
   }
 
@@ -145,7 +145,7 @@ export class ListProductsComponent {
     console.log('To update ', response);
 
 
-    /* this.productApplication.update(id, formData).subscribe({
+    /* this.productApplication.update(id, response).subscribe({
       next: () => {
         this.utilSrv.handleSuccess('Updated');
         this.getAll();
@@ -163,14 +163,11 @@ export class ListProductsComponent {
 
     this.productApplication.add(response).subscribe({
       next: () => {
-        console.log('Agregado Exitosamente!');
-
-        //this.utilSrv.handleSuccess('Added');
+        this.utilSrv.handleSuccess('Added');
         this.getAll();
       },
       error: () => {
-        console.log('Falló al intentar agregar!');
-        //this.utilSrv.handleError('adding');
+        this.utilSrv.handleError('adding');
       }
     });
 

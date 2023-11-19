@@ -1,29 +1,18 @@
 import { Injectable, inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  //private _snackBar = inject(MatSnackBar);
+  private toastr = inject(ToastrService);
 
   handleSuccess(action: string) {
-    /* this._snackBar.open(`✔ Ok, ${action}`, '', {
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      duration: this.durationInSeconds * 1000,
-      panelClass: ['green-snackbar'],
-    }); */
-
+    this.toastr.success(action, 'Ok!');
   }
 
   handleError(action: string) {
-    /* this._snackBar.open(`❌ Error ${action}`, '', {
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      duration: this.durationInSeconds * 1000,
-      panelClass: ['red-snackbar'],
-    });
-    console.log(`Error ${action}`); */
+    this.toastr.error(action, 'Opss!');
   }
 }
