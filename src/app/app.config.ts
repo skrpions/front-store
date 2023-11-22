@@ -7,9 +7,11 @@ import { ProductApplication } from './routes/products/application/product-applic
 import { ProductInfrastructure } from './routes/products/infrastructure/product-infrastructure';
 import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
+import { AuthApplication } from './routes/auth/application/auth-application';
+import { AuthInfrastructure } from './routes/auth/infrastructure/auth-infrastructure';
 
-const application = [ProductApplication];
-const infrastructure = [ProductInfrastructure];
+const application = [AuthApplication,ProductApplication];
+const infrastructure = [AuthInfrastructure,ProductInfrastructure];
 
 export const appConfig: ApplicationConfig = {
   providers: [
