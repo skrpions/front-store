@@ -9,9 +9,19 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { AuthApplication } from './routes/auth/application/auth-application';
 import { AuthInfrastructure } from './routes/auth/infrastructure/auth-infrastructure';
+import { StorageInfrastructure } from './routes/auth/infrastructure/storage-infrastructure';
+import { StorageApplication } from './routes/auth/application/storage-application';
 
-const application = [AuthApplication,ProductApplication];
-const infrastructure = [AuthInfrastructure,ProductInfrastructure];
+const application = [
+  AuthApplication,
+  StorageApplication,
+  ProductApplication,
+];
+const infrastructure = [
+  AuthInfrastructure,
+  StorageInfrastructure,
+  ProductInfrastructure,
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
