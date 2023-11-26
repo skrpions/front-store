@@ -43,9 +43,4 @@ export class AuthApplication {
     return !!accessToken || this.userLogged;
   }
 
-  logout(): void {
-    this.userLogged = false;
-    this.storageRepository.clear();
-    this.router.parseUrl('/');
-  }
 }

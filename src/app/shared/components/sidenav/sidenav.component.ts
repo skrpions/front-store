@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MaterialModule } from '../../material.module';
 import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,6 +15,7 @@ import { RouterModule, Router } from '@angular/router';
 export class SidenavComponent {
   private media = inject(MediaMatcher);
   private router = inject(Router);
+  private authSrv = inject(AuthService);
 
   username = '';
   mobileQuery!: MediaQueryList; // Responsive media query
@@ -29,7 +31,7 @@ export class SidenavComponent {
   }
 
   logout(): void {
-    this.router.navigateByUrl('/');
+    this.authSrv.logout();
   }
 
 }

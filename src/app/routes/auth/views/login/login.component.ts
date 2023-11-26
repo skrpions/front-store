@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   private readonly authApplication = inject(AuthApplication);
 
   ngOnInit(): void {
-
     this.initForm();
   }
 
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
     return this.reactiveForm.get('password')!;
   }
 
-  public send(): void {
+  send(): void {
 
     if (this.reactiveForm.invalid) return this.reactiveForm.markAllAsTouched(); // Activo todos los errores en el formGuest
 
