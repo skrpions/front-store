@@ -4,6 +4,7 @@ import { HomeComponent } from './routes/dashboard/components/home/home.component
 import { DashboardComponent } from './routes/dashboard/views/dashboard/dashboard.component';
 import { ListProductsComponent } from './routes/products/views/list-products/list-products.component';
 import { ListCategoriesComponent } from './routes/categories/views/list-categories/list-categories.component';
+import { loggedInGuard } from './core/guards/logged-in.guard';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,7 @@ export const routes: Routes = [
   {
     path: 'dashboard', // (Private) 🚷 Dashboard ...
     component: DashboardComponent,
-    //canActivate: [authenticationGuard],
+    canActivate: [loggedInGuard],
     children:[
       {
         path: 'home',

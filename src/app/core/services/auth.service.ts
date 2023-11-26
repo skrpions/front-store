@@ -16,7 +16,6 @@ export class AuthService {
   logout() {
     this.storageRepository.clear();
     this.router.navigateByUrl('/');
-
   }
 
 
