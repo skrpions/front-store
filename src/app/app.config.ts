@@ -12,6 +12,7 @@ import { AuthInfrastructure } from './routes/auth/infrastructure/auth-infrastruc
 import { StorageInfrastructure } from './routes/auth/infrastructure/storage-infrastructure';
 import { StorageApplication } from './routes/auth/application/storage-application';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
 
 const application = [
   AuthApplication,
@@ -28,7 +29,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
-    provideHttpClient(withInterceptors([tokenInterceptor])),
+    provideHttpClient(withInterceptors([tokenInterceptor, errorInterceptor])),
     provideToastr(), // Toastr providers
     ...application,
     ...infrastructure,
