@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { StorageInfrastructure } from '../../routes/auth/infrastructure/storage-infrastructure';
 import { Router } from '@angular/router';
 import { StorageRepository } from '../../routes/auth/domain/repositories/storage-repository';
@@ -8,15 +8,13 @@ import { StorageRepository } from '../../routes/auth/domain/repositories/storage
 })
 export class AuthService {
 
-  constructor(
-    @Inject(StorageInfrastructure) private readonly storageRepository: StorageRepository,
-    private router: Router
-  ) {}
+  private router = inject(Router);
+
+  constructor(@Inject(StorageInfrastructure) private readonly storageRepository: StorageRepository) {}
 
   logout() {
     this.storageRepository.clear();
     this.router.navigateByUrl('/');
   }
-
 
 }

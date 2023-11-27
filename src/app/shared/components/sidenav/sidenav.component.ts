@@ -20,9 +20,9 @@ export class SidenavComponent {
   username = '';
   mobileQuery!: MediaQueryList; // Responsive media query
   menuNav = [
-    {name: "Home", route: "home", icon: "dashboard"},
-    {name: "Categorías", route: "categories", icon: "category"},
-    {name: "Productos", route: "products", icon: "add_shopping_cart"}
+    {name: "Dashboard", route: "home", icon: "dashboard"},
+    {name: "Categories", route: "categories", icon: "category"},
+    {name: "Products", route: "products", icon: "add_shopping_cart"}
   ]
 
   ngOnInit(): void {

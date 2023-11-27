@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, inject } from "@angular/core";
 import { ProductInfrastructure } from "../infrastructure/product-infrastructure";
 import { ProductRepository } from "../domain/repositories/product-repository";
 import { ProductEntity } from "../domain/entities/product-entity";

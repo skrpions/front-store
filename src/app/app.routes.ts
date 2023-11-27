@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './routes/auth/views/login/login.component';
-import { HomeComponent } from './routes/dashboard/components/home/home.component';
 import { DashboardComponent } from './routes/dashboard/views/dashboard/dashboard.component';
 import { ListProductsComponent } from './routes/products/views/list-products/list-products.component';
 import { ListCategoriesComponent } from './routes/categories/views/list-categories/list-categories.component';
 import { loggedInGuard } from './core/guards/logged-in.guard';
+import { AdminLayoutComponent } from './theme/admin-layout/admin-layout.component';
 
 export const routes: Routes = [
   {
@@ -18,12 +18,12 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard', // (Private) 🚷 Dashboard ...
-    component: DashboardComponent,
+    component: AdminLayoutComponent,
     canActivate: [loggedInGuard],
     children:[
       {
         path: 'home',
-        component: HomeComponent
+        component: DashboardComponent
       },
       {
         path: 'products',

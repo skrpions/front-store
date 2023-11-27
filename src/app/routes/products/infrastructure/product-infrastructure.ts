@@ -10,7 +10,7 @@ export class ProductInfrastructure {
   private http = inject(HttpClient);
 
   list(): Observable<ProductEntity[]> {
-    return this.http.get<ProductEntity[]>(`${environment.apiPath}/productsre`);
+    return this.http.get<ProductEntity[]>(`${environment.apiPath}/products`);
   }
 
   add(entity: Partial<ProductEntity>): Observable<ProductEntity> {
