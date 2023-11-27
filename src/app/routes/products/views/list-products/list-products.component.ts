@@ -52,11 +52,6 @@ export class ListProductsComponent {
     });
   }
 
-
-  /* showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  } */
-
   processResponse(rawData: any) {
 
     if (!rawData) return;
